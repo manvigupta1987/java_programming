@@ -14,6 +14,7 @@ public class FindSubsequenceOfSecond {
             return false;
         }
 
+        // iterate over the strings and match the character of string1 with string2 in sequence.
         while (i < len1 && j < len2) {
             if (str1.charAt(i) == str2.charAt(j)) {
                 i++;
