@@ -73,7 +73,6 @@ public class MergeSortLinkedList {
             lastAddedNode.next = right;
         }
         return resultList;
-
     }
 
 

@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.HashSet;
+
 public class IntersectionOfLinkedList {
     static LinkedList findIntersection(LinkedList list1, LinkedList list2 ) {
         if (list1.count() == 0 || list2.count() == 0) {
@@ -10,7 +12,8 @@ public class IntersectionOfLinkedList {
         LinkedList.Node list1_ptr = list1.getHead();
         LinkedList.Node list2_ptr = list2.getHead();
 
-        // idea is to use two pointers. if data is equal, push the node to the intersection list. if node of list 1 is less than list2, increment the list 1 pointer
+        // idea is to use two pointers. if data is equal, push the node to the intersection list.
+        // if node of list 1 is less than list2, increment the list 1 pointer
         // else list2 pointer.
 
         while (list1_ptr != null && list2_ptr != null) {
@@ -26,6 +29,33 @@ public class IntersectionOfLinkedList {
         }
         return intersectList;
     }
+
+    static LinkedList findUnion(LinkedList list1, LinkedList list2) {
+        if (list1.count() == 0 || list2.count() == 0) {
+            System.out.println("No union found");
+            return null;
+        }
+
+        LinkedList unionList = new LinkedList();
+        LinkedList.Node list1_ptr = list1.getHead();
+        LinkedList.Node list2_ptr = list2.getHead();
+        HashSet<Integer> set = new HashSet<>();
+
+        while (list1_ptr != null) {
+            set.add(list1_ptr.data);
+            list1_ptr = list1_ptr.next;
+        }
+        while (list2_ptr != null) {
+            set.add(list2_ptr.data);
+            list2_ptr = list2_ptr.next;
+        }
+
+        for (int item: set) {
+            unionList.append(item);
+        }
+        return unionList;
+    }
+
     public static void main(String[] args) {
         LinkedList list1 = new LinkedList();
         list1.pushAtFront(6);
@@ -42,5 +72,7 @@ public class IntersectionOfLinkedList {
 
         LinkedList intersectList = findIntersection(list1, list2);
         intersectList.printList();
+        LinkedList unionList = findUnion(list1, list2);
+        unionList.printList();
     }
 }
