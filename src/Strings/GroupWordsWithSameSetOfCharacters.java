@@ -1,8 +1,5 @@
 package Strings;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 //Given a list of words with lower cases. Implement a function to find all Words that have the same unique character set .
 
@@ -11,22 +8,17 @@ import java.util.Map;
 // print the result by traversing the table.
 
 public class GroupWordsWithSameSetOfCharacters {
-    static int EncodeString(String str) {
-        int resKey = 0;
-        boolean[] visited = new boolean[26];
-        Arrays.fill(visited, false);
+    static String EncodeString(String str) {
+        char[] freqChar = new char[26];
         for (int i =0; i< str.length(); i++) {
-            if (!visited[str.charAt(i) -'a']) {
-                resKey += str.charAt(i) - 'a';
-                visited[str.charAt(i)-'a'] = true;
-            }
+            freqChar[str.charAt(i)-'a']++;
         }
-        return resKey;
+        return new String(freqChar);
     }
     static void findWords(String[] str) {
-        HashMap<Integer, ArrayList<String>> map = new HashMap<>();
-        for (int i=0; i < str.length; i++) {
-            int key = EncodeString(str[i]);
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        for (int i = 0; i < str.length; i++) {
+            String key = EncodeString(str[i]);
 
             ArrayList<String> list = map.get(key);
             if (list == null) {
@@ -38,10 +30,10 @@ public class GroupWordsWithSameSetOfCharacters {
             }
         }
 
-        for (Map.Entry<Integer, ArrayList<String>> it : map.entrySet()) {
+        for (Map.Entry<String, ArrayList<String>> it : map.entrySet()) {
             ArrayList<String> words = it.getValue();
-            for (String word: words) {
-                System.out.print( word + ", ");
+            for (String word : words) {
+                System.out.print(word + ", ");
             }
             System.out.println();
         }

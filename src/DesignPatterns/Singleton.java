@@ -1,14 +1,28 @@
 package DesignPatterns;
 
 // Creational Design Pattern:
-//Summary : The singleton pattern is a design pattern that restricts the instantiation of a class to one object.
+//Summary : The singleton pattern is a design pattern that restricts the instantiation of a class to one object. It can be used to create
+// single DB connection shared by multiple objects as creating a seprate DB connection for every object may be costly.
 // READ it --> https://www.geeksforgeeks.org/singleton-design-pattern/
 //https://www.geeksforgeeks.org/java-singleton-design-pattern-practices-examples/
 // https://www.geeksforgeeks.org/prevent-singleton-pattern-reflection-serialization-cloning/
 //https://medium.com/@kevalpatel2106/digesting-singleton-design-pattern-in-java-5d434f4f322
 // https://medium.com/swlh/a-complete-guide-on-singleton-design-pattern-in-java-846c2f8df5fc
 
-public class Singleton {
+// How do you make the class singleton:
+// 1. Define the private constuctor and object as static. Create a getInstance public method where instance will only be created when the object is null.
+
+// What are the issues with the singleton :
+// 1. Singleton class should be thread safe. To achieve this, we can use following things:
+//    --- make the getInstance function synchronized. However, this will decrease the performance of the program as to get the instance of the class, we need to
+//        use synchronized everytime.
+
+// 2. Instead of declaring the function getInstance as synchronized, use the synchronized only when the object is null as synchronizaton is not required when
+//  object is created. Also, declare the variable as volatile.
+
+import java.io.Serializable;
+
+public class Singleton implements Serializable, Cloneable {
     //Volatile keyword ensures that multiple threads offer the obj variable correctly when it is being initialized to Singleton instance
     private static volatile  Singleton obj = null;
     public String s;
@@ -31,6 +45,19 @@ public class Singleton {
             }
         }
         return obj;
+    }
+
+    //In serialization and deserialization, we store the state in the file and read it later point of time. When we deserialize this, it will create
+    // a new instance of the class. To prevent this, we have to provide the implementation of readResolve in our singleton class.
+    // Make singleton from serialize and deserialize operation.
+    protected Singleton readResolve() {
+        return getInstance();
+    }
+
+    //Now whenever user will try to create clone of singleton object, it will throw exception and hence our class remains singleton.
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
 }
 

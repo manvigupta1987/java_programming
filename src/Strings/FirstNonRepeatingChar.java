@@ -9,7 +9,8 @@ import java.util.Map;
 // Solution:
 //1. Store the character and index of the char in the hash map.
 //2. set the index as -1 for the repeating characters in the hashmap.
-//3. traverse the hashmap and find the first non repeating character by comparing the index.
+//3. traverse the string and find the first non repeative character with the help of hashmap.
+
 
 public class FirstNonRepeatingChar {
     static int firstNonRepeating(String str) {
@@ -24,14 +25,12 @@ public class FirstNonRepeatingChar {
             }
         }
 
-        int result = Integer.MAX_VALUE;
-        for (Map.Entry<Character, Integer> map: hashMap.entrySet()) {
-            int index = map.getValue();
-            if (index > -1 && index < result) {
-                result = index;
+        for (int i = 0; i<str.length(); i++) {
+            if (hashMap.get(str.charAt(i)) != -1) {
+                return i;
             }
         }
-        return result;
+        return Integer.MAX_VALUE;
     }
     public static void main(String[] args) {
         String str = "abcdabce";

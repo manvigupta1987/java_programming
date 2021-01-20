@@ -1,7 +1,7 @@
 package Strings;
 
-// An anagram of a string is another string that contains the same characters, only the order of characters can be different.
-// For example, “abcd” and “dabc” are an anagram of each other.
+// An anagram of a string is another string that contains the same characters, only the order of characters can be
+// different. For example, “abcd” and “dabc” are an anagram of each other.
 
 //The problem can be Done in Linear time and constant space.
 //

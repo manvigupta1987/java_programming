@@ -83,7 +83,7 @@ public class CyclicBarrierDemo implements Runnable
 
         try
         {
-            CyclicBarrierDemo.newBarrier.await();
+            newBarrier.await();
         }
         catch (InterruptedException | BrokenBarrierException e)
         {

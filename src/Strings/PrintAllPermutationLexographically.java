@@ -3,6 +3,8 @@ package Strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // Given a string of length n, print all permutation of the given string. Repetition of characters is allowed. Print these permutations in lexicographically sorted order
 
@@ -11,22 +13,24 @@ import java.util.HashSet;
 // first index. Continue these steps till last character.
 
 public class PrintAllPermutationLexographically {
-    static void allLexicographicRecur(String str, char[] data, int last, int index) {
-        for (int i = 0; i< str.length(); i++) {
-            data[index] = str.charAt(i);
-
-            if (index == last) {
-                System.out.println(new String(data));
-            } else {
-                allLexicographicRecur(str, data, last, index + 1);
+    static void allLexicographicRecur(String str, List<Character> data) {
+        if(data.size() == str.length()) {
+            System.out.println(data.stream().map(String::valueOf).collect(Collectors.joining()));
+        } else {
+            for (int i = 0; i< str.length(); i++) {
+                // if you dont want to include same character in the string again, include this check
+                // if(data.contains(str.charAt(i)) continue;
+                data.add(str.charAt(i));
+                allLexicographicRecur(str, data);
+                data.remove(data.size() - 1);
             }
         }
     }
     static void allLexicographic(String str) {
-        char[] data = new char[str.length()];
+        List<Character> data = new ArrayList<>();
         char[] temp = str.toCharArray();
         Arrays.sort(temp);
-        allLexicographicRecur(new String(temp), data, str.length() -1, 0);
+        allLexicographicRecur(new String(temp), data);
     }
     public static void main(String[] args) {
         String str = "ABC";

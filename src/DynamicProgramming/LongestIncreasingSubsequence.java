@@ -1,34 +1,32 @@
 package DynamicProgramming;
 
-// A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements.
+// A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order
+// of the remaining elements.
 
 
-// https://www.youtube.com/watch?v=CE2b_-XfVDk
-
-
-import java.util.Arrays;
+//https://www.youtube.com/watch?v=odrfUCS9sQk
 
 public class LongestIncreasingSubsequence {
     static int LongIncrConseqSubseq(int[] arr, int len) {
         int[] T = new int[len];
-        Arrays.fill(T, 1);
-        int i =1;
-        for (int j = 0; j < len && i<len ; j++) {
-            if (arr[j] < arr[i]) {
-                T[i] = Math.max(T[i], T[j] + 1);
-            } else if (i == j){
-                j = -1;
-                i = i+1;
+        T[0] = 1;
+        int num = 0;
+        for (int j = 0; j < len; j++) {
+            int max = 0;
+            for(int i = 0; i< j; i++) {
+                if(arr[i] < arr[j]) {
+                    if(T[i] > max) {
+                        max = T[i];
+                    }
+                }
+            }
+            T[j] = max + 1;
+            if(T[j] > num) {
+                num = T[j];
             }
         }
 
-        int max = 0;
-        for (int j =0; j<len; j++) {
-            if (T[j] > max) {
-                max = T[j];
-            }
-        }
-        return max;
+        return num;
     }
     public static void main(String[] args) {
         int arr[] = { 5, 7, 6, 7, 8};

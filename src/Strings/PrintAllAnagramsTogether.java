@@ -25,6 +25,7 @@ public class PrintAllAnagramsTogether {
         HashMap<Integer, List<String>> map = new HashMap<>();
         for (int i =0; i< strings.length; i++) {
             int hashcode = findHashCode(strings[i]);
+
             if (map.containsKey(hashcode)) {
                 map.get(hashcode).add(strings[i]);
             } else {
