@@ -1,6 +1,7 @@
 package Strings;
 
-//Given a string which contains lower alphabetic characters, we need to remove at most one character from this string in such a way that
+//Given a string which contains lower alphabetic characters, we need to remove at most one character from this string
+// in such a way that
 // frequency of each distinct character becomes same in the string.
 
 //we can iterate over all characters one by one and decrease their frequency by one, if all frequencies become same then we will flag that

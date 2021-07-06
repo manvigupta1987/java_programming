@@ -1,7 +1,8 @@
 package Arrays;
 
 import Utils.Utils;
-// We are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side of the array. Traverse array only once.
+// We are given an array of 0s and 1s in random order. Segregate 0s on left side and 1s on right side
+// of the array. Traverse array only once.
 
 //Time Complexity : O(N)
 public class Segregate0sAnd1s {

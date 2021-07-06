@@ -3,7 +3,8 @@ package Arrays;
 //Given an array of integers. All numbers occur twice except one number which
 // occurs once. Find the number in O(n) time & constant extra space.
 
-//The best solution is to use XOR. XOR of all array elements gives us the number with a single occurrence. The idea is based on the following two facts.
+//The best solution is to use XOR. XOR of all array elements gives us the number with a single occurrence.
+// The idea is based on the following two facts.
 //a) XOR of a number with itself is 0.
 //b) XOR of a number with 0 is number itself.
 public class FindElementAppearOnlyOnce {

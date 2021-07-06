@@ -146,6 +146,26 @@ public class LinkedList {
         head = prev;
     }
 
+    public void reverseLastNNodes(int n) {
+        Node slow_ptr = head, fast_ptr = head;
+        for (int i =0; i < n; i++) {
+            fast_ptr = fast_ptr.next;
+        }
+        while (fast_ptr.next != null) {
+            slow_ptr = slow_ptr.next;
+            fast_ptr = fast_ptr.next;
+        }
+
+        Node currentNode = slow_ptr.next, prevNode = null, nextNode = null;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        slow_ptr.next = prevNode;
+     }
+
     public static void main(String[] args) {
         LinkedList llist = new LinkedList();
 
@@ -198,5 +218,11 @@ public class LinkedList {
         NthNodeFromEndOfLinkedList.printNthFromLast(2, llist.getHead());
 
         MiddleOfLinkedList.middleLinkedList(llist.getHead());
+
+        llist.printList();
+
+        System.out.println("\n reverse the last N nodes of linked list\n ");
+        llist.reverseLastNNodes(4);
+        llist.printList();
     }
 }

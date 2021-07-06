@@ -1,5 +1,6 @@
 package java8;
 
+import javax.smartcardio.CommandAPDU;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -129,5 +130,13 @@ class employee {
         DoubleSummaryStatistics employeeStat = employeeList.stream().collect(Collectors.summarizingDouble(employee::getSalary));
         System.out.println(employeeStat.getAverage());
         System.out.println(employeeStat.getSum());
+
+        // Name of the person whose age is max
+        employee mostAgeEmployee = employeeList.stream().max(Comparator.comparing(employee::getAge)).get();
+        System.out.println("Most aged person is = " + mostAgeEmployee.name);
+
+        long count = employeeList.stream().filter(employee -> employee.getAge() == 25).count();
+        System.out.println("Employees with age 25 = " + count);
+
     }
 }

@@ -2,11 +2,12 @@ package DesignPatterns;
 
 // Creation Design Pattern
 //Summary: In Factory pattern, we create object without exposing the creation logic to client
-// and the client use the same common interface to create new type of object. Its mainly used for loose coupling where we will have an interface and we have multiple
-// implementation of that interface. So, the factory class will be responsible for creating the object for those multiple implementations.
+// and the client use the same common interface to create new type of object. Its mainly used for loose coupling
+// where we will have an interface and we have multiple implementation of that interface. So, the factory class
+// will be responsible for creating the object for those multiple implementations.
 
-// Problem : Consider we want to implement a notification service through email, SMS, and push notification. Let’s try to implement this with the help of factory
-// method design pattern.
+// Problem : Consider we want to implement a notification service through email, SMS, and push notification.
+// Let’s try to implement this with the help of factory method design pattern.
 
 // Usage: getInstance() method of java.util.Calendar, NumberFormat, and ResourceBundle uses factory method design pattern.
 public class Factory {
@@ -55,3 +56,5 @@ class PushNotification implements Notification {
 interface Notification {
     void notifyUser();
 }
+
+

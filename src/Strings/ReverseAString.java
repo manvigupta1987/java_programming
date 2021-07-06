@@ -1,5 +1,7 @@
 package Strings;
 
+
+
 public class ReverseAString {
     static String reverseString(String str) {
         if (str.length() == 1) {
@@ -17,12 +19,12 @@ public class ReverseAString {
         return new String(ch);
     }
 
-    static void reverseStringUsingRecursion(String str) {
+    static void reverseStringUsingRecursion(String str, StringBuffer revStr) {
         if (str == null || str.length() < 1) {
             System.out.println(str);
         } else {
             System.out.print(str.charAt(str.length()-1));
-            reverseStringUsingRecursion(str.substring(0, str.length()-1));
+            reverseStringUsingRecursion(str.substring(0, str.length()-1), revStr.append(str.charAt(str.length()-1)));
         }
     }
 
@@ -47,7 +49,9 @@ public class ReverseAString {
         String str = "GeeksForGeeks";
         System.out.println(reverseString(str));
 
-        reverseStringUsingRecursion(str);
+        StringBuffer rev = new StringBuffer();
+        reverseStringUsingRecursion(str, rev);
+        System.out.println("reversed string is " + rev.toString());
         char[] str1 = str.toCharArray();
         reverseStringUsingRecursionInPlace(str1, 0);
 

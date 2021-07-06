@@ -1,8 +1,10 @@
 package Strings;
 
-// Given a binary string, count number of substrings that start and end with 1. For example, if the input string is “00100101”, then there are three substrings “1001”, “100101” and “101”.
+// Given a binary string, count number of substrings that start and end with 1. For example,
+// if the input string is “00100101”, then there are three substrings “1001”, “100101” and “101”.
 
-// Since here we don't need to consider the single character string, formula that we can use is Suppose frequency of 1 is m. Number of subString is m(m-1)/2.
+// Since here we don't need to consider the single character string, formula that we can use is Suppose
+// frequency of 1 is m. Number of subString is m(m-1)/2.
 
 public class CountSubStringsStartAndEndWith1InBinaryString {
 

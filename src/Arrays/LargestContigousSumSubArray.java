@@ -1,6 +1,7 @@
 package Arrays;
 
-// Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers which has the largest sum.
+// Write an efficient program to find the sum of contiguous subarray within a one-dimensional
+// array of numbers which has the largest sum.
 
 //Algorithm :
 
@@ -19,23 +20,23 @@ package Arrays;
 
 public class LargestContigousSumSubArray {
     static void maxSubArraySum(int[] arr, int len) {
-        int max_so_far = 0;
-        int max_ending_here = 0;
-        int start = -1, end =-1, s =0;
+        int max = 0;
+        int current_sum = 0;
+        int start = -1, end = -1, s =0;
 
         for (int i =0; i< len; i++) {
-            max_ending_here += arr[i];
-            if (max_so_far < max_ending_here) {
-                max_so_far = max_ending_here;
+            current_sum += arr[i];
+            if (max < current_sum) {
+                max = current_sum;
                 end = i;
                 start = s;
             }
-            if (max_ending_here < 0) {
-                max_ending_here = 0;
+            if (current_sum < 0) {
+                current_sum = 0;
                 s = i+1;
             }
         }
-        System.out.println("Max Sum = " + max_so_far + " start =" + start + " end =" + end);
+        System.out.println("Max Sum = " + max + " start =" + start + " end =" + end);
     }
     public static void main(String[] args) {
         int a[] = { -2, -3, 4, -1, -2, 1, 5, -3 };

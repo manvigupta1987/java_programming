@@ -8,6 +8,7 @@ public class Callable1 {
         Future future = executorService.submit(new FactorialTask(5));
         try {
             System.out.println(future.get());
+            executorService.shutdown();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

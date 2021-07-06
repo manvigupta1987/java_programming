@@ -11,7 +11,8 @@ public class ReverseArray {
         if (start > end) {
             throw new IllegalArgumentException();
         }
-        while (start < end) {
+        int len = arr.length;
+        while (start < len/2) {
             Utils.swap(arr, start, end);
             start++;
             end--;

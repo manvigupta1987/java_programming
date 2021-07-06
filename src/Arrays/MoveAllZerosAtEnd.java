@@ -11,7 +11,7 @@ public class MoveAllZerosAtEnd {
         // Move all the non-zero element at the begining of the array.
 
         for (int i =0; i< n; i++) {
-            if (arr[i] > 0) {
+            if (arr[i] != 0) {
                 Utils.swap(arr, i, count);
                 count++;
             }

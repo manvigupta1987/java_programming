@@ -1,6 +1,7 @@
 package Strings;
 
-//Given a string s and a character c, find if all occurrences of c appear together in s or not. If the character c does not appear in the string at all,
+//Given a string s and a character c, find if all occurrences of c appear together in s or not.
+// If the character c does not appear in the string at all,
 // the answer is true.
 public class CheckIfAllOccurancesOfACharAppearTogether {
     static boolean findOccurances(String str, char ch) {
@@ -20,7 +21,7 @@ public class CheckIfAllOccurancesOfACharAppearTogether {
     }
 
     public static void main(String[] args) {
-        String str = "111000032311";
+        String str = "11111";
         char c = '1';
         if(findOccurances(str, c)) {
             System.out.println("YES");

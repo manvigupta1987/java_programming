@@ -19,14 +19,18 @@ public class KMaximumSumCombinations {
             }
         }
 
-        for (int i=0; i< k; i++) {
+        int count = 0;
+        while(count < k && priorityQueue.size() != 0) {
+
+
             System.out.println(priorityQueue.peek());
             priorityQueue.remove();
+            count++;
         }
     }
     public static void main(String[] args) {
-        int A[] = { 4, 2, 5, 1 };
-        int B[] = { 8, 0, 5, 3 };
+        int A[] = {1, 2};
+        int B[] = { 3 };
         int N = A.length;
         int K = 3;
 

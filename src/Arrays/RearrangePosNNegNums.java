@@ -1,9 +1,9 @@
 package Arrays;
 
 import Utils.Utils;
-// Given an array of positive and negative numbers, arrange them such that all negative integers appear before
-// all the positive integers in the array without using any additional data structure like a hash table, arrays, etc.
-// The order of appearance should be maintained.
+// Given an array of positive and negative numbers, arrange them such that all negative integers
+// appear before all the positive integers in the array without using any additional data structure
+// like a hash table, arrays, etc.The order of appearance should be maintained.
 
 //Since we need to keep the order, we can use insertion sort to order the negative and positive numbers.
 

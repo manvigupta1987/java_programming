@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class findSubsets {
-    static int[] nums ={0};
+    static int[] nums ={0, 1, 2};
     static List<List<Integer>> result = new ArrayList();
     public static void findSubsetsOfArray(int index, List<Integer> curr_list) {
         result.add(new ArrayList<>(curr_list));

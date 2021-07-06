@@ -1,8 +1,9 @@
 package DesignPatterns;
 
 // Creational Design Pattern:
-//Summary : The singleton pattern is a design pattern that restricts the instantiation of a class to one object. It can be used to create
-// single DB connection shared by multiple objects as creating a seprate DB connection for every object may be costly.
+//Summary : The singleton pattern is a design pattern that restricts the instantiation of a class to one object.
+// It can be used to create single DB connection shared by multiple objects as creating a seprate DB connection
+// for every object may be costly.
 // READ it --> https://www.geeksforgeeks.org/singleton-design-pattern/
 //https://www.geeksforgeeks.org/java-singleton-design-pattern-practices-examples/
 // https://www.geeksforgeeks.org/prevent-singleton-pattern-reflection-serialization-cloning/
@@ -17,8 +18,8 @@ package DesignPatterns;
 //    --- make the getInstance function synchronized. However, this will decrease the performance of the program as to get the instance of the class, we need to
 //        use synchronized everytime.
 
-// 2. Instead of declaring the function getInstance as synchronized, use the synchronized only when the object is null as synchronizaton is not required when
-//  object is created. Also, declare the variable as volatile.
+// 2. Instead of declaring the function getInstance as synchronized, use the synchronized only when the object is null
+// as synchronizaton is not required when object is created. Also, declare the variable as volatile.
 
 import java.io.Serializable;
 
@@ -37,7 +38,8 @@ public class Singleton implements Serializable, Cloneable {
     // Double checked locking method.
     public static Singleton getInstance() {
         if (obj == null) {
-            // It reduces the overhead of calling synchronized multiple times as once a object is created, we dont need to worry about the synchronization.
+            // It reduces the overhead of calling synchronized multiple times as once a object is created,
+            // we dont need to worry about the synchronization.
             synchronized (Singleton.class) {
                 if (obj == null) {
                     obj = new Singleton();
@@ -47,18 +49,21 @@ public class Singleton implements Serializable, Cloneable {
         return obj;
     }
 
-    //In serialization and deserialization, we store the state in the file and read it later point of time. When we deserialize this, it will create
-    // a new instance of the class. To prevent this, we have to provide the implementation of readResolve in our singleton class.
+    //In serialization and deserialization, we store the state in the file and read it later point of time.
+    // When we deserialize this, it will create a new instance of the class. To prevent this, we have to provide
+    // the implementation of readResolve in our singleton class.
     // Make singleton from serialize and deserialize operation.
     protected Singleton readResolve() {
         return getInstance();
     }
 
-    //Now whenever user will try to create clone of singleton object, it will throw exception and hence our class remains singleton.
+    //Now whenever user will try to create clone of singleton object, it will throw exception and hence our
+    // class remains singleton.
     @Override
     protected Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
     }
+
 }
 
 class Main {
@@ -69,11 +74,28 @@ class Main {
         Singleton y = Singleton.getInstance();
         Singleton z = Singleton.getInstance();
 
+
+
         x.s = (x.s).toUpperCase();
 
-        System.out.println("String from x is " + x.s);
-        System.out.println("String from y is " + y.s);
-        System.out.println("String from z is " + z.s);
+        System.out.println("String from x is " + x.hashCode());
+        System.out.println("String from y is " + y.hashCode());
+        System.out.println("String from z is " + z.hashCode());
         System.out.println("\n");
     }
 }
+
+// JUnit test cases for testing singleton class
+//public class LazySingletonDoubleLockCheckTest {
+//
+//    @Test
+//    public void testSingleton() {
+//
+//        LazySingletonDoubleLockCheck instance1 = Singleton.getInstance();
+//        LazySingletonDoubleLockCheck instance2 = Singleton.getInstance();
+//        System.out.println("checking singleton objects equality");
+//        assertEquals(true, instance1==instance2);
+//        //fail("Not yet implemented");
+//    }
+//
+//}

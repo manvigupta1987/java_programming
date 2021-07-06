@@ -228,11 +228,7 @@ public class BinaryTree {
             int lDepth = maximumDepthOfTree(node.left);
             int rDepth = maximumDepthOfTree(node.right);
 
-            if (lDepth > rDepth) {
-                return lDepth +1;
-            } else {
-                return rDepth +1;
-            }
+            return lDepth > rDepth ? lDepth + 1 : rDepth +1;
         }
     }
 
@@ -273,8 +269,11 @@ public class BinaryTree {
         System.out.println("\nMinimum Depth of Tree :" + minimumDepthOfTree());
         insert(2);
         insert(1);
+
+        BFS();
         // https://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/
         System.out.println("\nMaximum Depth of Tree :" + maximumDepthOfTree(root));
+        System.out.println("\nMinimum Depth of Tree :" + minimumDepthOfTree());
         BFS();
     }
 

@@ -47,6 +47,30 @@ public class MergeTwoArraysOfDifferentArray {
             }
         }
     }
+
+    static void mergeArrays1(int[] arr1, int[] arr2, int len1, int len2) {
+        int tail1 = len1-len2 -1;
+        int tail2 = len2 -1;
+        int finished = len1-1;
+        while (tail1 >=0 && tail2 >=0) {
+            arr1[finished--] = arr1[tail1] > arr2[tail2] ? arr1[tail1--] : arr2[tail2--];
+        }
+
+        while (tail2 >= 0) {
+            arr1[finished--] = arr2[tail2--];
+        }
+    }
+
+    static void movePositiveElemToBeginning(int[] mPlusN, int len) {
+        int start = 0, i =0;
+        while (i < len) {
+            if (mPlusN[i] != -1) {
+                Utils.swap(mPlusN, start, i);
+                start++;
+            }
+            i++;
+        }
+    }
     public static void main(String[] args) {
         int mPlusN[] = {2, 8, -1, -1, -1, 13, -1, 15, 20};
         int N[] = {5, 7, 9, 25};
@@ -54,10 +78,13 @@ public class MergeTwoArraysOfDifferentArray {
         int n = N.length;
         int m = mPlusN.length;
 
-        movePositiveElemToEnd(mPlusN, m);
+//        movePositiveElemToEnd(mPlusN, m);
+        movePositiveElemToBeginning(mPlusN, m);
+        Utils.printArray(mPlusN , m);
+        mergeArrays1(mPlusN, N, m, n);
         Utils.printArray(mPlusN , m);
 
-        mergeArrays(mPlusN, N, m, n);
-        Utils.printArray(mPlusN , m);
+//        mergeArrays(mPlusN, N, m, n);
+//
     }
 }

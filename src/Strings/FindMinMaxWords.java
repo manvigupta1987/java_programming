@@ -7,8 +7,8 @@ public class FindMinMaxWords {
         int start = 0, end = 0;
         int min_len =str.length(), min_start_index = 0;
         int max_len = 0, max_start_index = 0;
-
-        for (int i=0; i< str.length(); i++) {
+        int i = 0;
+        for ( ; i< str.length(); i++) {
             if (str.charAt(i) == ' ') {
                 int word_len = i-start;
                 if (word_len > max_len) {
@@ -22,13 +22,24 @@ public class FindMinMaxWords {
                 start = i+1;
             }
         }
+        if(i == str.length() && start < i) {
+            int word_len = i -start;
+            if (word_len > max_len) {
+                max_len = word_len;
+                max_start_index = start;
+            }
+            if (word_len < min_len) {
+                min_len = word_len;
+                min_start_index = start;
+            }
+        }
 
         minWord = str.substring(min_start_index, min_start_index+min_len);
         maxWord = str.substring(max_start_index, max_start_index+max_len);
 
     }
     public static void main(String[] args) {
-        String a = "GeeksforGeeks A Computer Science portal for Geeks";
+        String a = "Geeks A Computer Science portal for GeeksforGeeks";
 
         minMaxLengthWords(a);
 

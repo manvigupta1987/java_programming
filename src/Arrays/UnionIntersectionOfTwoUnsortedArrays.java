@@ -3,7 +3,7 @@ package Arrays;
 import java.util.HashSet;
 
 public class UnionIntersectionOfTwoUnsortedArrays {
-    static void printUnion(int[] arr1, int[] arr2, int len1, int len2) {
+    static void printUnion(int[] arr1, int[] arr2) {
         HashSet<Integer> set = new HashSet<>();
         for (int item: arr1) {
             set.add(item);
@@ -40,7 +40,7 @@ public class UnionIntersectionOfTwoUnsortedArrays {
         int m = arr1.length;
         int n = arr2.length;
 
-        printUnion(arr1, arr2, m, n);
+        printUnion(arr1, arr2);
         System.out.println("Intersection is :");
         interSection(arr1, arr2, m, n);
     }

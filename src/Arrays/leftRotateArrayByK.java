@@ -2,8 +2,7 @@ package Arrays;
 
 import java.util.Arrays;
 
-// time complexity is O(n)
-public class rotateArrayByK {
+public class leftRotateArrayByK {
     static void reverse(int[] arr, int start, int end) {
         while(start < end) {
             int temp = arr[start];
@@ -15,15 +14,16 @@ public class rotateArrayByK {
     }
 
     static void rotate(int[] arr, int k) {
-        k = k % arr.length;
-        reverse(arr, 0, arr.length-1);
-        reverse(arr, 0, k -1 );
-        reverse(arr, k , arr.length-1);
+        int len = arr.length;
+        k = k % len;
+        reverse(arr, 0, len-1);
+        reverse(arr, 0, len - 1 -k );
+        reverse(arr, len-1 -(k-1), len-1);
     }
 
     public static void main(String[] args) {
-        int arr[] = new int[]{1, 2, 3, 4, 5, 9, 8};
-        int k = 5;
+        int arr[] = new int[]{ 1, 2, 3, 4, 5, 6, 7 };
+        int k = 2;
         System.out.println("Given Array is");
         System.out.println(Arrays.toString(arr));
 
@@ -32,5 +32,4 @@ public class rotateArrayByK {
         System.out.println("Rotated Array is");
         System.out.println(Arrays.toString(arr));
     }
-
 }

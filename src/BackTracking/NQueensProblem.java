@@ -1,6 +1,7 @@
 package BackTracking;
 
-// The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other. For example, following is a solution for 4 Queen problem.
+// The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
+// For example, following is a solution for 4 Queen problem.
 // https://www.youtube.com/watch?v=05y82cP3bJo
 
 public class NQueensProblem {

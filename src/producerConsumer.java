@@ -59,7 +59,9 @@ class PC {
                 }
                 System.out.println("Producer produced-"  + value);
                 linkedList.add(value++);
-                notify(); // In both the methods, we use notify at the end of all statements. The reason is simple, once you have something in list, you can have the consumer thread consume it, or if you have consumed something, you can have the producer produce something.
+                notify(); // In both the methods, we use notify at the end of all statements.
+                // The reason is simple, once you have something in list, you can have the consumer thread consume it,
+                // or if you have consumed something, you can have the producer produce something.
 
                 Thread.sleep(1000);
             }

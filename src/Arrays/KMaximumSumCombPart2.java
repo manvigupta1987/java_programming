@@ -63,6 +63,20 @@ class Pair {
         this.l = l;
         this.m = m;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pair pair = (Pair) o;
+        return l == pair.l &&
+                m == pair.m;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(l, m);
+    }
 }
 
 class PairSum implements Comparable<PairSum> {

@@ -8,7 +8,7 @@ public class DoubleTheElementsAndMoveAllZerosAtEnd {
         for (int i = 0; i< n; i++) {
             if (arr[i] > 0) {
                 Utils.swap(arr, i, count);
-                arr[i] = arr[i] *2;
+                arr[count] = arr[count] *2;
                 count++;
             }
         }

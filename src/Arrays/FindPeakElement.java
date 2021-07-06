@@ -2,18 +2,15 @@ package Arrays;
 
 public class FindPeakElement {
     static int findPeakUsingBinarySearch(int[] arr, int start, int end) {
-        while (start < end) {
-            int mid = (start + end) /2;
-            if (arr[mid] > arr[mid +1 ] && arr[mid] > arr[mid-1]) {
-                return arr[mid];
-            }
-            if (arr[mid] < arr[mid-1]) {
+        while(start < end) {
+            int mid = (start + end ) / 2;
+            if(arr[mid] > arr[mid + 1]) {
                 end = mid;
             } else {
-                start = mid+1;
+                start = mid + 1;
             }
         }
-        return arr[0];
+        return arr[start];
     }
     static int findPeak(int[] arr, int len) {
         if (len == 1) {

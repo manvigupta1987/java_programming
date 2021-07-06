@@ -15,8 +15,9 @@ public class KnightsTour {
 
     static boolean solveKTUtil(int[][] sol, int row, int col, int move ) {
 
-        // Base case when move is equal to the number of sqaures in the chess.
+        // Base case when move is equal to the number of squares in the chess.
         if (move == N*N) {
+            printSolution(sol);
             return true;
         }
          /* xMove[] and yMove[] define next move of Knight.
@@ -26,11 +27,11 @@ public class KnightsTour {
         int yMove[] = { 1, 2, 2, 1, -1, -2, -2, -1 };
 
         for (int k = 0; k < 8; k++) {
-            int next_x = row+xMove[k];
-            int next_y = col+yMove[k];
-            if (isSafe(sol, next_x , next_y)) {
+            int next_x = row + xMove[k];
+            int next_y = col + yMove[k];
+            if (isSafe(sol, next_x, next_y)) {
                 sol[next_x][next_y] = move;
-                if (solveKTUtil(sol, next_x, next_y, move +1) == true) {
+                if(solveKTUtil(sol, next_x, next_y, move + 1) == true) {
                     return true;
                 }
                 sol[next_x][next_y] = -1;
@@ -50,12 +51,9 @@ public class KnightsTour {
         }
 
         sol[0][0] = 0;
-        if (solveKTUtil(sol, 0, 0, 1) == false) {
-            System.out.println("Solution does not exist");
-            return;
-        }
-        printSolution(sol);
+        solveKTUtil(sol, 0, 0, 1);
     }
+
     public static void main(String[] args) {
         solveKT();
     }

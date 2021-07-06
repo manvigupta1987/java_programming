@@ -1,7 +1,8 @@
 package DesignPatterns;
 
 //Creational Pattern :
-// Separate the construction of a complex object from its representation so that the same construction process can create different representations.”
+// Separate the construction of a complex object from its representation so that the same construction process can
+// create different representations.”
 // It is used to construct a complex object step by step and the final step will return the object.
 
 // Advantages:
@@ -19,7 +20,7 @@ public class Builder {
                                           .setRam(2)
                                           .setProcessor("latest")
                                           .setScreenSize(5.6)
-                                          .getPhone();
+                                          .build();
 
         System.out.println(android);
 
@@ -79,7 +80,7 @@ class PhoneBuilder{
         return this;
     }
 
-    public Phone getPhone() {
+    public Phone build() {
         Phone phone = new Phone(this);
         return phone;
     }

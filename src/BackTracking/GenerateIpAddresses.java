@@ -3,7 +3,8 @@ package BackTracking;
 import java.util.ArrayList;
 import java.util.List;
 
-// Given a string S containing only digits, Your task is to complete the function genIp() which returns a vector containing all possible combination of valid IPv4 ip address and takes only a string S as its only argument.
+// Given a string S containing only digits, Your task is to complete the function genIp() which returns a
+// vector containing all possible combination of valid IPv4 ip address and takes only a string S as its only argument.
 // Condition for valid ip string is:
 // 1. it should be in the format for x.x.x.x
 //2 . x can be 0 or any number between 1 to 255

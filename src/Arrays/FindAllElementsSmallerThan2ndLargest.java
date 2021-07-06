@@ -9,6 +9,9 @@ package Arrays;
 //The output three elements have two or
 //more greater elements
 
+import java.util.Collections;
+import java.util.PriorityQueue;
+
 // This can be solved using Max Heap and Min Heap.
 // The following solution provides the complexity of O(n)
 public class FindAllElementsSmallerThan2ndLargest {
@@ -29,9 +32,27 @@ public class FindAllElementsSmallerThan2ndLargest {
             }
         }
     }
+
+    private static void findElementsWithMaxHeap(int[] arr, int len) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i =0; i< len; i++) {
+            maxHeap.add(arr[i]);
+        }
+        for (int i = 0; i< len; i++) {
+            if (i < 2) {
+                maxHeap.poll();
+            } else {
+                System.out.println(maxHeap.poll());
+            }
+        }
+
+
+    }
     public static void main(String[] args) {
         int arr[] = { 2, -6, 3, 5, 1};
         int n = arr.length;
         findElements(arr, n);
+
+        findElementsWithMaxHeap(arr, n);
     }
 }

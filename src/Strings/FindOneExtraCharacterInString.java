@@ -5,6 +5,14 @@ package Strings;
 
 //Time Complexity:- O(n+n+1)
 //Space Complexity:- O(1).
+
+// (1) If you take xor of a number with 0 ( zero ) , it would return the same number again.
+//
+//Means , n ^ 0 = n
+//
+//(2) If you take xor of a number with itself , it would return 0 ( zero ).
+//
+//Means , n ^ n = 0
 public class FindOneExtraCharacterInString {
     static char findExtraCharcter(String str1, String str2) {
         int i =0;
